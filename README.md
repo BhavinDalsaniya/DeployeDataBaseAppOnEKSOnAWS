@@ -169,11 +169,11 @@ kubectl get svc
 ## Update `application.properties`
 After retrieving the services, we need to copy the MySQL cluster IP and update the `application.properties` file:
 
-```
+```sh
 jdbc:mysql://<cluster-ip>:/shipwreck
 username=root
 password=root
-
+```
 
 ## Step 7: Install Docker
 ```bash
