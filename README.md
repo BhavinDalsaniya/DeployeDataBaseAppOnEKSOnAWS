@@ -149,6 +149,31 @@ spec:
 ```bash
 kubectl apply -f mysql-deployment.yaml
 ```
+# Kubernetes Commands and Configuration Notes
+
+## Retrieve Pods
+```sh
+kubectl get pod
+```
+
+## Access MySQL Pod
+```sh
+kubectl exec --stdin --tty mysql-74f8bf98c5-bl8vv -- /bin/bash
+```
+
+## Retrieve Services
+```sh
+kubectl get svc
+```
+
+## Update `application.properties`
+After retrieving the services, we need to copy the MySQL cluster IP and update the `application.properties` file:
+
+```
+jdbc:mysql://<cluster-ip>:/shipwreck
+username=root
+password=root
+
 
 ## Step 7: Install Docker
 ```bash
