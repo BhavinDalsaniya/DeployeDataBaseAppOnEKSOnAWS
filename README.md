@@ -1,6 +1,6 @@
-# DeployeDataBaseAppOnEKSOnAWS
+## DeployeDataBaseAppOnEKSOnAWS
 
-# AWS EKS Setup and Deployment Guide
+## AWS EKS Setup and Deployment Guide
 
 ## Step 1: Create AMI User with Admin Access
 1. Create an AMI user with Administrator access.
