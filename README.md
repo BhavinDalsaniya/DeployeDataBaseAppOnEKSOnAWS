@@ -159,7 +159,7 @@ kubectl get pod
 
 ## Access MySQL Pod
 ```sh
-kubectl exec --stdin --tty mysql-74f8bf98c5-bl8vv -- /bin/bash
+kubectl exec --stdin --tty <pod-name> -- /bin/bash
 ```
 
 ## Retrieve Services
@@ -171,7 +171,7 @@ kubectl get svc
 After retrieving the services, we need to copy the MySQL cluster IP and update the `application.properties` file:
 
 ```sh
-jdbc:mysql://<cluster-ip>:/shipwreck
+jdbc:mysql://<cluster-ip>:3306/shipwreck
 username=root
 password=root
 ```
@@ -271,5 +271,29 @@ spec:
 ```
 ```bash
 kubectl apply -f shipwreck-service.yaml
+```
+```bash
 kubectl get deploy
+```
+```bash
 kubectl expose deployment shipwrackbhavin-deployment --name=shipwreck-svc --type=LoadBalancer --port=80 --target-port=8181
+```
+```bash
+kubectl get svc
+```
+
+# Kubernetes Services
+
+## Service Details
+```
+NAME                      TYPE           CLUSTER-IP      EXTERNAL-IP
+           PORT(S)        AGE
+kubernetes                ClusterIP      10.100.0.1      <none>
+           443/TCP        45m
+mysql                     ClusterIP      10.100.43.24    <none>
+           3306/TCP       36m
+shipwrackbhavin-service   LoadBalancer   10.100.248.4    a5420ac73d75f4baaa70b41393cc143e-401312477.us-east-1.elb.amazonaws.com    80:30984/TCP   24m
+
+This above load balancer will work.
+
+shipwreck-svc             LoadBalancer   10.100.157.42   ab0b34330bac647b58ab84aef3d21604-1340199434.us-east-1.elb.amazonaws.com   80:31912/TCP   24m
